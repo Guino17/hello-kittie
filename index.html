@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hello Kitty Atrapa los Corazones</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+  <meta name="theme-color" content="#ff69b4">
+
+</head>
+<body>
+  <h1>Hola, {{ name or "Amor" }} 💖</h1>
+  <div id="gameArea">
+    <img id="kitty" src="{{ url_for('static', filename='imagenes/hello-kitty.png') }}" alt="Hello Kitty">
+  </div>
+  <p id="score">Puntos: 0</p>
+
+  <form id="gameOverForm" action="/gameover" method="post" style="display:none;">
+    <input type="hidden" name="name" id="playerName" value="Mi Amor">
+    <input type="hidden" name="score" id="finalScore" value="0">
+  </form>
+
+<audio id="click-sound" src="{{ url_for('static', filename='sounds/click.mp3') }}"></audio>
+<audio id="win-sound" src="{{ url_for('static', filename='sounds/win.mp3') }}"></audio>
+<audio id="lose-sound" src="{{ url_for('static', filename='sounds/lose.mp3') }}"></audio>
+
+
+
+  <script src="{{ url_for('static', filename='js/game.js') }}"></script>
+</body>
+</html>
